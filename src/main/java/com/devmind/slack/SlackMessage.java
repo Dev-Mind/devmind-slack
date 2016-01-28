@@ -36,6 +36,7 @@ public class SlackMessage {
 
     public SlackMessage setText(String text) {
         this.text = text;
+        return this;
     }
 
     public String getIcon_emoji() {
