@@ -36,6 +36,7 @@ public class SlackMessageSender {
             restTemplate.postForLocation(slackServiceIncomingUrl, slackMessage);
         }
         catch (RuntimeException e){
+
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
         return ResponseEntity.ok().body("Message sent");

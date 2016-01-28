@@ -7,10 +7,10 @@ package com.devmind.slack;
 public class SlackMessage {
 
     private String channel;
-    private String content;
+    private String text;
     private String username;
-    private String emoji;
-    private String image;
+    private String icon_emoji;
+    private String icon_url;
 
     public String getChannel() {
         return channel;
@@ -18,24 +18,6 @@ public class SlackMessage {
 
     public SlackMessage setChannel(String channel) {
         this.channel = channel;
-        return this;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public SlackMessage setContent(String content) {
-        this.content = content;
-        return this;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public SlackMessage setImage(String image) {
-        this.image = image;
         return this;
     }
 
@@ -48,12 +30,29 @@ public class SlackMessage {
         return this;
     }
 
-    public String getEmoji() {
-        return emoji;
+    public String getText() {
+        return text;
     }
 
-    public SlackMessage setEmoji(String emoji) {
-        this.emoji = emoji;
+    public SlackMessage setText(String text) {
+        this.text = text;
+    }
+
+    public String getIcon_emoji() {
+        return icon_emoji;
+    }
+
+    public SlackMessage setIcon_emoji(String icon_emoji) {
+        this.icon_emoji = icon_emoji;
+        return this;
+    }
+
+    public String getIcon_url() {
+        return icon_url;
+    }
+
+    public SlackMessage setIcon_url(String icon_url) {
+        this.icon_url = icon_url;
         return this;
     }
 }
