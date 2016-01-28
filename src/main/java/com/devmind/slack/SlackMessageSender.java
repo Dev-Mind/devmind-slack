@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Collections;
+
 /**
  * @author Dev-Mind <guillaume@dev-mind.fr>
  * @since 27/01/16.
@@ -42,9 +44,9 @@ public class SlackMessageSender {
         try{
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-            HttpEntity<String> request = new HttpEntity<>(objectMapper.writeValueAsString(slackMessage), headers);
-
-            restTemplate.postForObject(slackServiceIncomingUrl, request, String.class);
+            //HttpEntity<String> request = new HttpEntity<>(objectMapper.writeValueAsString(slackMessage), headers);
+            HttpEntity<SlackMessage> request = new HttpEntity<>(slackMessage, headers);
+            restTemplate.exchange(slackServiceIncomingUrl, HttpMethod.POST, request, String.class);
         }
         catch (RuntimeException e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
