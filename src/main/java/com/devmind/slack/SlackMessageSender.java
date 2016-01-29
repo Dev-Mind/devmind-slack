@@ -29,23 +29,22 @@ public class SlackMessageSender {
     @Autowired
     private ObjectMapper objectMapper;
 
-    @Autowired
-    private RestTemplate restTemplate;
 
     @RequestMapping(value = "/slack/{message}")
     public ResponseEntity<String> hello(@PathVariable(value = "message") String message) throws JsonProcessingException {
 
+        RestTemplate restTemplate = new RestTemplate();
+
         SlackMessage slackMessage = new SlackMessage()
-                .setChannel("#random")
+                .setChannel("random")
                 .setText(message)
-                .setUsername("Dev-Mind")
-                .setIcon_emoji("ghost");
+                .setUsername("guillaume")
+                .setIcon_url("http://dev-mind.fr/logo/logo_48.png");
 
         try{
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-            //HttpEntity<String> request = new HttpEntity<>(objectMapper.writeValueAsString(slackMessage), headers);
-            HttpEntity<SlackMessage> request = new HttpEntity<>(slackMessage, headers);
+            HttpEntity<String> request = new HttpEntity<>(objectMapper.writeValueAsString(slackMessage), headers);
             restTemplate.exchange(slackServiceIncomingUrl, HttpMethod.POST, request, String.class);
         }
         catch (RuntimeException e){

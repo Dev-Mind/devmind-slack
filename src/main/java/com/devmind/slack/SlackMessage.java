@@ -17,7 +17,7 @@ public class SlackMessage {
     }
 
     public SlackMessage setChannel(String channel) {
-        this.channel = channel;
+        this.channel = "#" + channel;
         return this;
     }
 
@@ -44,7 +44,7 @@ public class SlackMessage {
     }
 
     public SlackMessage setIcon_emoji(String icon_emoji) {
-        this.icon_emoji = icon_emoji;
+        this.icon_emoji = ":" + icon_emoji + ":";
         return this;
     }
 

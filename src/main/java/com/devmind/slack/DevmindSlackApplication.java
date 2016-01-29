@@ -10,16 +10,7 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
-@Configuration
 public class DevmindSlackApplication {
-
-	@Bean
-	public RestTemplate restSlackTemplate(){
-		RestTemplate restTemplate = new RestTemplate();
-		restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-		restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
-		return restTemplate;
-	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(DevmindSlackApplication.class, args);
