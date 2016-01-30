@@ -23,7 +23,7 @@ import org.springframework.web.client.RestTemplate;
 public class SlackMessageSender {
 
     @Value("${slack.services.incoming}")
-    private String slackServiceIncomingUrl;
+private String slackServiceIncomingUrl;
 
     @Autowired
     private ObjectMapper objectMapper;
